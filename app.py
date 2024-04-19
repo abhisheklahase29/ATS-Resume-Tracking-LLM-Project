@@ -89,8 +89,8 @@ if submit:
         
 
         cursor = con.cursor()
-        sql = "INSERT INTO ats_resume_info (_first_name,_last_name,_role,_score) VALUES (%s,%s,%s,%s)"
-        values = (first_name,last_name,role,ats_score_int)
+        sql = "INSERT INTO ats_resume_info (_first_name,_last_name,_role,_score,_experience) VALUES (%s,%s,%s,%s,%s)"
+        values = (first_name,last_name,role,ats_score_int,experience)
         cursor.execute(sql,values)
         con.commit()
         st.success("Data Updated")
