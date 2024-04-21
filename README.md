@@ -45,7 +45,7 @@ streamlit run app.py
 ```
 
 
-5.ScreenShot ofPower BI Dashboard
+5.ScreenShot of Power BI Dashboard
 
 ![Screenshot 2024-04-21 180611](https://github.com/abhisheklahase29/ATS-Resume-Tracking-LLM-Project/assets/102788394/35ff46ec-74b5-47d8-9890-75ab30222cec)
 
