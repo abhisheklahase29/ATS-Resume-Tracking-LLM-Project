@@ -27,18 +27,16 @@ def input_pdf_text(uploaded_file):
 
 input_prompt="""
 Hey Act Like a skilled or very experience ATS(Application Tracking System)
-with a deep understanding of tech field,software engineering,data science ,data analyst, full stack engineer
-and big data engineer. Your task is to evaluate the resume based on the given job description and resume:{text}
+with a deep understanding of tech field,software engineering,data science ,data analyst
+and big data engineer. Your task is to evaluate the resume based on the given job description.
 You must consider the job market is very competitive and you should provide 
 best assistance for improving thr resumes. Assign the percentage Matching based 
-on Jd, resume ,job market and 
+on Jd and
 the missing keywords with high accuracy
 resume:{text}
 description:{jd}
-if there are no missing words write No Missing words
-
 I want the response in one single string having the structure and also dont forget to give meanigfull response if 
-ATS score is low give appropriate decision about Can apply
+ATS score is low give appropriate decision about Can apply also dont forget to give bullet points for improvement
 **ATS Score**: "%",
   **MissingKeyword"**: [],\n
   **Can Select**: ""
@@ -51,9 +49,19 @@ con = c.connect(
     database="ATS_resume"
 )
 ## streamlit app
-st.title("Smart ATS")
-st.text("Improve Your Resume ATS")
+
+
+
+
+with open('style.css') as f:
+    st.markdown(f'<style>{f.read()}</style>',unsafe_allow_html=True)
+
+
+
+st.title(':rainbow[RESUME GUARDIAN] ')
+st.text("Improve Your Resume where ATS Efficiency Meets Accuracy: Unveiling LLM-Based ATS Resume Scoring Technology")
 first_name = st.text_input("Enter First Name:")
+
 last_name = st.text_input("Enter Last Name:")
 
 roleoptions = ["--Select--","Data Analyst","Data Scientist","Machine Learning Engineer","Data Engineer","Software Engineer","Full Stack Engineer"]
@@ -92,8 +100,9 @@ if submit:
         sql = "INSERT INTO ats_resume_info (_first_name,_last_name,_role,_score,_experience) VALUES (%s,%s,%s,%s,%s)"
         values = (first_name,last_name,role,ats_score_int,experience)
         cursor.execute(sql,values)
+    
         con.commit()
-        st.success("Data Updated")
+        st.success("Data Updated",icon="✅")
 
     else: 
         st.subheader("Please Upload your Resume")
